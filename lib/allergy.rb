@@ -1,5 +1,3 @@
-
-
 def allergy(number)
 
   result = []
@@ -23,14 +21,21 @@ def allergy(number)
                   }
 
   allergy_scores.each do |allergen, score|
-    if number == score
+    if number >= score
       result << allergen
-    elsif number > score
-        result << allergen
-        number = number - score
+      number = number - score
     end
   end
-  result
+  result.join(", ")
 end
 
-puts allergy(24)
+while true
+  puts "Enter your allergy number"
+  input = gets.chomp
+  if input == '\quit'
+    exit
+  else 
+    puts allergy(input.to_i)
+  end
+end
+
